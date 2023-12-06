@@ -93,35 +93,60 @@ class WheelSlider extends StatefulWidget {
 
   static List<Widget> barUI(totalCount, horizontal, lineColor) {
     return List.generate(
-      totalCount + 1,
+      ((totalCount * 10).toInt() + 1)
+          .toDouble(), // Generate based on double totalCount
       (index) => Container(
         height: horizontal
-            ? multipleOfFive(index)
-                ? 35.0
-                : 20.0
-            : 1.5,
+            ? (index % 5 == 0 ? 35.0 : 20.0)
+            : 1.5, // Adjust height based on condition
         width: horizontal
             ? 1.5
-            : multipleOfFive(index)
-                ? 35.0
-                : 20.0,
+            : (index % 5 == 0 ? 35.0 : 20.0), // Adjust width based on condition
         alignment: Alignment.center,
         child: Container(
           height: horizontal
-              ? multipleOfFive(index)
-                  ? 35.0
-                  : 20.0
-              : 1.5,
+              ? (index % 5 == 0 ? 35.0 : 20.0)
+              : 1.5, // Adjust height based on condition
           width: horizontal
               ? 1.5
-              : multipleOfFive(index)
+              : (index % 5 == 0
                   ? 35.0
-                  : 20.0,
+                  : 20.0), // Adjust width based on condition
           color: lineColor,
           alignment: Alignment.center,
         ),
       ),
     );
+    // return List.generate(
+    //   (totalCount * 10).toInt() + 1,
+    //   (index) => Container(
+    //     height: horizontal
+    //         ? multipleOfFive(index)
+    //             ? 35.0
+    //             : 20.0
+    //         : 1.5,
+    //     width: horizontal
+    //         ? 1.5
+    //         : multipleOfFive(index)
+    //             ? 35.0
+    //             : 20.0,
+    //     alignment: Alignment.center,
+    //     child: Container(
+    //       height: horizontal
+    //           ? multipleOfFive(index)
+    //               ? 35.0
+    //               : 20.0
+    //           : 1.5,
+    //       width: horizontal
+    //           ? 1.5
+    //           : multipleOfFive(index)
+    //               ? 35.0
+    //               : 20.0,
+    //       color: lineColor,
+    //       alignment: Alignment.center,
+    //     ),
+    //   ),
+    // );
   }
 
   /// Displays numbers instead of lines.
